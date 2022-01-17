@@ -1,14 +1,15 @@
+package edu.rice.cs.playingcards.card;
 import static org.junit.jupiter.api.Assertions.*;
 
-import main.java.edu.rice.cs.playingcards.card.Card.java;
+import org.junit.jupiter.api.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CardTest {
-    private static Card card1 = new Card(Rank.ACE, Suit.SPADES);
+    private static Card card1 = new Card(Card.Rank.ACE, Card.Suit.SPADES);
 
     @Test
     @Order(1)
     void testCardToString() {
-        assertEquals("A of SPADES");
+        assertEquals("A of Spades", card1.toString());
     }
 }
