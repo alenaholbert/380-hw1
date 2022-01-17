@@ -4,6 +4,7 @@ import main.java.edu.rice.cs.playingcards.card.Card.java;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CardTest {
+
     private static Card card1 = new Card(Rank.ACE, Suit.SPADES);
 
     @Test
