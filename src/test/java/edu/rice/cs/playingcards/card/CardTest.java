@@ -1,15 +1,35 @@
 package edu.rice.cs.playingcards.card;
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.*;
+import junit.framework.TestCase;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class CardTest {
+public class CardTest extends TestCase {
     private static Card card1 = new Card(Card.Rank.ACE, Card.Suit.SPADES);
 
-    @Test
-    @Order(1)
-    void testCardToString() {
+    public void testCardToString() {
         assertEquals("A of Spades", card1.toString());
+    }
+
+    public void testNullsNotAcceptedInConstructor() {
+        // Test that null Rank and null Suit are not accepted
+        try {
+            new Card(null, null);
+            fail ("Expected: " + NullPointerException.class.getName());
+        } catch (NullPointerException npe) {}
+
+        // Test that null Rank is not accepted
+        for (Card.Suit suit: Card.Suit.values()) {
+            try {
+                new Card(null, suit);
+                fail("Expected: " + NullPointerException.class.getName());
+            } catch (NullPointerException npe) {}
+        }
+
+        // Test that null Suit is not accepted
+        for (Card.Rank rank: Card.Rank.values()) {
+            try {
+                new Card(rank, null);
+                fail("Expected: " + NullPointerException.class.getName());
+            } catch (NullPointerException npe) {}
+        }
     }
 }
